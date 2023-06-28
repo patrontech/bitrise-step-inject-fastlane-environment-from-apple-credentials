@@ -18,10 +18,19 @@ func main() {
 	provider := devportalservice.NewBitriseClient(http, buildUrl, buildToken)
 
 	if provider == nil {
+		logger.Errorf("Failed to connect to Bitrise.")
 		os.Exit(1)
 	}
 
 	logger.Infof("%s", "Successfully connected to Bitrise.")
+
+	connection, err := provider.GetAppleDeveloperConnection()
+	if err != nil {
+		logger.Errorf("Failed to connect to Bitrise: %s", err)
+		os.Exit(1)
+	}
+
+	logger.Infof("Apple ID: %s", connection.AppleIDConnection.AppleID)
 
 	//	fmt.Println("This is the value specified for the input 'example_step_input':", os.Getenv("example_step_input"))
 	//
