@@ -21,6 +21,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	logger.Infof("%s", "Successfully connected to Bitrise.")
+
 	//	fmt.Println("This is the value specified for the input 'example_step_input':", os.Getenv("example_step_input"))
 	//
 	// --- Step Outputs: Export Environment Variables for other Steps:
